@@ -1,14 +1,24 @@
 # [MongoDB Sample Dataset](https://docs.atlas.mongodb.com/sample-data/available-sample-datasets/)
 
-For `mongoimport` the MongoDB database tools need to installed. You can find it [here](https://www.mongodb.com/try/download/database-tools?tck=docs_databasetools)
+[MongoDB database tools](https://www.mongodb.com/docs/database-tools/) need to be [downloaded and installed](https://www.mongodb.com/try/download/database-tools) to use tools like `mongoimport`, `mongoexport`, `mongodump` and `mongorestore`.
 
-> this is a fork of [repo](https://github.com/mcampo2/mongodb-sample-databases).
+> This is a fork of [repo](https://github.com/neelabalan/mongodb-sample-dataset).
 
-> the original repo has BSON dump. I've removed it and I added a bash [script](https://github.com/neelabalan/mongodb-sample-dataset/blob/main/script.sh) to import the JSON to respective db 
+> To import JSON files to respective db, execute [script.sh](https://github.com/bonniss/mongodb-sample-dataset/blob/main/script.sh)
+
+> For handy db backup and restore operations, I've added zip dump files in root by a bash [script](https://github.com/bonniss/mongodb-sample-dataset/blob/main/drmongo.sh). Every file simply the output of `mongodump`, hence you can restore the whole db using `mongorestore`.
+
+```bash
+# Create/Restore all sample dbs
+./drmongo.sh -r
+
+# Backup all sample dbs
+./drmongo.sh -d
+```
 
 Atlas provides sample data you can load into your Atlas clusters. You can use this data to quickly get started experimenting with data in MongoDB and using tools such as the Atlas Perform CRUD Operations in Atlas and MongoDB Charts.
 
-MongoDB does not provide any sample databases on their website, However, they do provide sample databases for their cloud service Atlas.  These databases have been dumped from a MongoDB Atlas cluster using the MongoDB Compass GUI.  There are 7 databases, with each database collection (table) stored in a seperate JSON file.  These files will accelerate learning of MongoDB's features by allowing new developers to quickly experiment with prepopulated datasets.
+MongoDB does not provide any sample databases on their website, However, they do provide sample databases for their cloud service Atlas. These databases have been dumped from a MongoDB Atlas cluster using the MongoDB Compass GUI.  There are 7 databases, with each database collection (table) stored in a seperate JSON file.  These files will accelerate learning of MongoDB's features by allowing new developers to quickly experiment with prepopulated datasets.
 
 
 ## Sample Datasets
@@ -31,7 +41,7 @@ docker pull mvertes/alpine-mongo
 docker run -d --name mongo -p 2717:27017 -v ~/mongodb:/data/db mvertes/alpine-mongo
 
 # args
-#   hostname   
+#   hostname
 #   port
 ./script.sh localhost 2717
 
